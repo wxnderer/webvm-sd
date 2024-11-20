@@ -15,7 +15,8 @@ WORKDIR /home/user/
 # We set env, as this gets extracted by Webvm. This is optional.
 ENV HOME="/home/user" TERM="xterm" USER="user" SHELL="/bin/bash" EDITOR="vim" LANG="en_US.UTF-8" LC_ALL="C"
 RUN echo 'root:password' | chpasswd
-RUN mkdir sdcpp && cd sdcpp && python3 -m venv .venv && source .venv/bin/activate
+RUN mkdir sdcpp && cd sdcpp && python3 -m venv .venv
+RUN . .venv/bin/activate
 RUN pip install stable-diffusion-cpp-python
 RUN git lfs install
 RUN git clone git clone https://huggingface.co/Steward/lcm-dreamshaper-v7-gguf
