@@ -16,8 +16,8 @@ WORKDIR /home/user/
 ENV HOME="/home/user" TERM="xterm" USER="user" SHELL="/bin/bash" EDITOR="vim" LANG="en_US.UTF-8" LC_ALL="C"
 RUN echo 'root:password' | chpasswd
 RUN mkdir sdcpp && cd sdcpp && python3 -m venv .venv && source .venv/bin/activate \
-	pip install stable-diffusion-cpp-python \
-	git lfs install \
-	git clone git clone https://huggingface.co/Steward/lcm-dreamshaper-v7-gguf
+	&& pip install stable-diffusion-cpp-python \
+	&& git lfs install \
+	&& git clone git clone https://huggingface.co/Steward/lcm-dreamshaper-v7-gguf
 COPY --chown=user:user ./sdcpp-example.py /home/user/sdcpp
 CMD [ "/bin/bash" ]
